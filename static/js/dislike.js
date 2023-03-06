@@ -1,4 +1,4 @@
-function getCookie(name) {
+function getdisCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== "") {
       var cookies = document.cookie.split(";");
@@ -13,9 +13,9 @@ function getCookie(name) {
     return cookieValue;
   }
   
-  function doLikes(id) { 
-    let csrftoken = getCookie("csrftoken");
-    fetch("/question_ans/likequestion/", {
+  function disLikes(id) { 
+    let csrftoken = getdisCookie("csrftoken");
+    fetch("/question_ans/dislikequestion/", {
       method: "post",
       body: JSON.stringify({
         id: id,
@@ -30,15 +30,14 @@ function getCookie(name) {
         return res.json();
       })
       .then((i) => {
-        document.getElementById(id+"like").remove();
-        document.getElementById("likebtn").innerHTML = `<div class="mt-4">
+        document.getElementById(id+"dislike").remove();
+        document.getElementById("dislikebtn").innerHTML = `<div class="mt-4">
         <button
               class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
               type="button">
-              <i class="fa-solid fa-thumbs-up"></i>
+              <i class="fa-solid fa-thumbs-down"></i>
             </button>
       </div>`;
       });
   }
-  
   

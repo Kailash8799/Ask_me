@@ -74,7 +74,13 @@ def delete_ans(request):
         data = json.loads(request.body.decode("utf-8"))
         id = data['id']
         if(id != None):
-            Answer.objects.filter(ans_id = id).delete()
+            ansuser = Answer.objects.filter(ans_id = id)
+            for us in ansuser:
+                print(us.que_ans.que_id)
+                que_a = Question.objects.filter(que_id=us.que_ans.que_id).first()
+                ntl = que_a.total_ans - 1
+                Question.objects.filter(que_id=us.que_ans.que_id).update(total_ans=ntl)
+                Answer.objects.filter(ans_id = id).delete()
             return JsonResponse({"msg":"success"})
         else:
             return JsonResponse({"msg":"error"})
@@ -85,6 +91,8 @@ def give_ans(request):
         qid = request.POST.get('id','')
         ans = request.POST.get('answer','')
         que_a = Question.objects.filter(que_id=qid).first()
+        ntl = que_a.total_ans + 1
+        Question.objects.filter(que_id=qid).update(total_ans=ntl)
         ansque = Answer(user=request.user,que_ans=que_a,answer=ans)
         ansque.save()
         return redirect(f"/question_ans/description_que/id={qid}/")
@@ -99,6 +107,20 @@ def likes_ques(request):
             for q in que:
                 que = q
             vis = que.likes + 1
+            Question.objects.filter(que_id = id).update(likes=vis)
+            return JsonResponse({"msg":"success"})
+        else:
+            return JsonResponse({"msg":"error"})
+@login_required
+def dislikes_ques(request):
+    if request.method == 'POST':
+        data = json.loads(request.body.decode("utf-8"))
+        id = data['id']
+        if(id != None):
+            que = Question.objects.filter(que_id=id)
+            for q in que:
+                que = q
+            vis = que.likes - 1
             Question.objects.filter(que_id = id).update(likes=vis)
             return JsonResponse({"msg":"success"})
         else:

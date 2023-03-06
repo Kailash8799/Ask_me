@@ -22,11 +22,13 @@
               {{ques.title | truncatechars:200}}
             </p>
         </a>
-            <div class="flex mt-2 items-center">
+            <div class="flex flex-wrap mt-2 items-center">
                 
                 {% comment %} {%for tg in ques.tags |split:" "%} {% endcomment %}
-                <p class="bg-slate-300 mx-1 px-2 align-middle rounded-lg items-center">{{ques.tags}}</p>
+                <p class="my-1 bg-slate-300 mx-1 px-2 align-middle rounded-lg items-center">{{ques.tags}}</p>
                 {% comment %} {%endfor%} {% endcomment %}
+                <p class="my-1 bg-slate-300 mx-1 px-2 align-middle rounded-lg items-center">Views : {{ques.total_views}}</p>
+                <p class="my-1 bg-slate-300 mx-1 px-2 align-middle rounded-lg items-center">Likes : {{ques.total_views}}</p>
             </div>
           </div>
     </div>

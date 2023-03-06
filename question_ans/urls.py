@@ -14,5 +14,6 @@ urlpatterns = [
     path("deleteanswer/",views.delete_ans,name="dlans"),
     path("deletequestion/",views.delete_que,name="dlque"),
     path("likequestion/",views.likes_ques,name="lkque"),
+    path("dislikequestion/",views.dislikes_ques,name="dlkque"),
     path('*',views.page404,name="page404")
 ]
