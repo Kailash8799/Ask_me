@@ -1,23 +1,7 @@
 {% extends 'temp.html' %} {% block title %}Search{% endblock title %} 
 {% block headcss %} 
 {% endblock headcss %} 
-{% block body %} {% comment %}
-<form action="/question_ans/search/" method="get">
-  <div class="md:w-[70%] w-[90%] mx-auto flex items-center my-4">
-    <input
-      type="text"
-      name="query"
-      placeholder="Search"
-      class="placeholder:text-gray-200 rounded-r-none"
-    />
-    <button
-      class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-green-600 rounded-r-lg hover:bg-green-500 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80"
-    >
-      Search
-    </button>
-  </div>
-</form>
-{% endcomment %}
+{% block body %}
 <form action="/question_ans/search/" method="get">
   <div
     class="items-center fixed right-4 justify-between w-full md:flex md:w-auto md:order-1 hidden"
