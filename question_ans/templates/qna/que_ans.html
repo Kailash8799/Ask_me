@@ -23,7 +23,15 @@
           {{ ques.user }}
         </p>
         <p class="text-sm  text-gray-500">{{ ques.date_created }}</p>
-        <div id="likebtn">
+  <div class="flex items-center">
+    <div class="items-center mt-4 mx-2 justify-center">
+      <button
+      class="inline-flex items-center py-1 px-4 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+      type="button">
+      {{ques.likes}}
+    </button>
+    </div>
+      <div id="likebtn" class="items-center">
         <div class="mt-4" id="{{ques.que_id}}like">
           <button onclick="doLikes({{ques.que_id}})"
                 class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
@@ -32,6 +40,7 @@
               </button>
         </div>
       </div>
+    </div>
       </div>
     </a>
   </div>
