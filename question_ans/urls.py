@@ -15,5 +15,6 @@ urlpatterns = [
     path("deletequestion/",views.delete_que,name="dlque"),
     path("likequestion/",views.likes_ques,name="lkque"),
     path("dislikequestion/",views.dislikes_ques,name="dlkque"),
+    path("tag/<str:tag>/",views.tagrelated,name="tagr"),
     path('*',views.page404,name="page404")
 ]

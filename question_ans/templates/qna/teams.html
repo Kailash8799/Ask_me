@@ -1,10 +1,42 @@
 {% extends 'temp.html' %}
+{% load static %}
 {% block title %}Questions{% endblock title %}
 {% block forpp %}text-white{% endblock forpp %}
 {% block headcss %}
 
 {% endblock headcss %}
 {% block body %}
-   Teams
-{% endblock body %}
+<h1 class="text-center text-4xl my-4  font-bold"> Our teams</h1>
+<div class="sm:flex sm:justify-center mx-1 my-10">
+   <div class="max-w-sm sm:mx-2 rounded justify-center mx-auto overflow-hidden shadow-lg">
+      <img class="w-5/6 mx-auto" src="{% static 'kailash.jpg' %}" alt="Sunset in the mountains">
+      <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+      <p class="text-gray-700 text-base">
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+      </p>
+      </div>
+      <div class="px-6 pt-4 pb-2">
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+      </div>
+   </div>
+   <div class="max-w-sm sm:mx-2 rounded mx-auto overflow-hidden shadow-lg">
+      <img class="w-5/6 mx-auto" src="{% static 'kailash.jpg' %}" alt="Sunset in the mountains">
+      <div class="px-6 py-4">
+         <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+         <p class="text-gray-700 text-base">
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+         </p>
+      </div>
+      <div class="px-6 pt-4 pb-2">
+         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+      </div>
+   </div>
+   </div>
+</div>
+ {% endblock body %}
 {% block scriptpart %}{% endblock scriptpart %}

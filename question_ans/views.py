@@ -155,5 +155,14 @@ def search(request):
     params = {'que':total_que,'query':query}
     return render(request,"qna/search.html",params)   
 
+def tagrelated(request,tag):
+    params = {'que':""}
+    query = tag
+    total_que = Question.objects.none()
+    if(request.method == "GET" and len(query) < 50 and (query)):
+        total_que = Question.objects.filter(tags__icontains=query)
+        count = total_que.count()
+    params = {'que':total_que,'query':query,'count':count}
+    return render(request,"qna/tagrelated.html",params)   
 def page404(request):
     return HttpResponse("404")

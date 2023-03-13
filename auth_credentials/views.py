@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate,logout,login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from question_ans.models import Question
+from django.core.files.storage import FileSystemStorage
+import os
 
 def loginuser(request):
     if request.user.is_authenticated == True :
@@ -104,7 +106,19 @@ def editprofile(requet,uname):
         gender = requet.POST.get("gender","")
         phone = requet.POST.get("phone","")
         img = requet.FILES.get("img","Images/auser.png")
-        u = Users.objects.filter(user_name=user).update(user_first_name=fname,user_last_name=lname,gender = gender,contact_no = phone,address = address,about_user = about,user_image=img)
+        url = "Images/auser.png"
+        userim = Users.objects.filter(user_name=user).first()
+        if(img != "Images/auser.png"):
+            fs = FileSystemStorage(location="media/Images")
+            print(userim.user_image.name)
+            if os.path.isfile(userim.user_image.path) and (userim.user_image.name) != ("Images/auser.png"):
+                os.remove(userim.user_image.path)
+            filename = fs.save(img.name,img)
+            url = "Images/"+filename
+        else:
+            if os.path.isfile(userim.user_image.path) and (userim.user_image.name) != ("Images/auser.png"):
+                os.remove(userim.user_image.path)
+        u = Users.objects.filter(user_name=user).update(user_first_name=fname,user_last_name=lname,gender = gender,contact_no = phone,address = address,about_user = about,user_image=url)
         
         return redirect(f"/authcreadentials/dashboard/@{user.username}/")
     ur = Users.objects.filter(user_name=user)
