@@ -74,14 +74,13 @@ def forgotuser(request):
             return render(request, 'auth_cred/forgot.html')
     return render(request, 'auth_cred/forgot.html')
 
-@login_required
 def logoutuser(request):
     if request.user.is_authenticated == False :
         return redirect("/")
     logout(request)
     return redirect("/")
 
-@login_required
+
 def userdeshboard(request,uname):
     if request.user.is_authenticated == False :
         return redirect('/')
@@ -93,7 +92,7 @@ def userdeshboard(request,uname):
         params = {'ud':ur,'ques':ques}
     return render(request,"auth_cred/dashboard.html",params)
 
-@login_required
+
 def editprofile(requet,uname):
     user = requet.user
     if(requet.user.is_authenticated == False):

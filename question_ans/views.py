@@ -15,7 +15,7 @@ def question(request):
         params = {'que':total_que}
     return render(request,"qna/all_que.html",params)   
 
-@login_required
+
 def askquestion(request):
     if request.user.is_authenticated == False:
         messages.warning(request,"Login required for ask question")
@@ -58,8 +58,11 @@ def answer(request):
         params = {'form':form}
     return render(request,"qna/que_ans.html",params) 
 
-@login_required   
+  
 def contact(request):
+    if request.user.is_authenticated == False :
+        messages.warning(request,"Login required for contact us")
+        return redirect("/")
     if(request.method == "POST"):
         message = request.POST.get("message","")
         cont = Contact(user=request.user,desc=message)
