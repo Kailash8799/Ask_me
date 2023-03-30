@@ -87,9 +87,10 @@ def userdeshboard(request,uname):
     user = request.user
     usr = Users.objects.filter(user_name=user)
     ques = Question.objects.filter(user=user)
-    params = {'ud':"",'ques':ques}
+    count = Question.objects.filter(user=user).count()
+    params = {'ud':"",'ques':ques,'count':count}
     for ur in usr:
-        params = {'ud':ur,'ques':ques}
+        params = {'ud':ur,'ques':ques,'count':count}
     return render(request,"auth_cred/dashboard.html",params)
 
 
