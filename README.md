@@ -6,7 +6,7 @@ as well you will be able to get the answers from the people who are master in th
 overall it is fully django driven web application which will be able to provide you really cool interface about having the doubts and solving them
 on tip of your fingers :))
 
-
+ 
 1. run this command for making migrations
 ```bash
 python manage.py makemigrations
